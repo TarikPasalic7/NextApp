@@ -17,11 +17,11 @@ export default function RegistracijaCard({image,title,text}) {
       image={image}
       sx={{objectFit:"contain"}}
     />
-<CardContent justifyContent="center" sx={{textAlign:"center",color:"#25AAA0"}}>
-      <Typography gutterBottom variant="h5" component="div" justifyContent="center" justifyItems="center">
+<CardContent  sx={{textAlign:"center",color:"#25AAA0"}}>
+      <Typography gutterBottom variant="h5" component="div" >
        {title}
       </Typography>
-      <Typography variant="body2" color="text.secondary" justifyContent="center"  sx={{color:"#25AAA0"}}>
+      <Typography variant="body2" color="text.secondary"   sx={{color:"#25AAA0"}}>
      {text}
       </Typography>
       <Button variant="contained" sx={{color:"white",backgroundColor:"#25AAA0",marginTop:4}}>{title}</Button>

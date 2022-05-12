@@ -15,8 +15,7 @@ function Section2() {
     <CssBaseline />
    <Container maxWidth={false}   >
    <Container  maxWidth="lg"  display="flex"
-      justifyContent="center"
-      alignItems="center">
+     >
   
    <Typography  align='center' variant='h5' component="h3" marginTop={20}  sx={{color:"#25AAA0"}}>
      Prije nego obavite uplatu, potrebno je da se prethodno registrujete, prateći sljedeće korake:
