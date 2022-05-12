@@ -13,6 +13,7 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
 import IndeterminateCheckBoxOutlinedIcon from '@mui/icons-material/IndeterminateCheckBoxOutlined';
 import { CounterContext } from './CounterContext';
 import { SumContext } from './SumContext';
+import useLocalStorage from '../CustomHooks/useLocalStorage';
 
 
 
@@ -25,10 +26,12 @@ export default function UplateCard({data}) {
   const [first, setfirst] = useState(false)
   const [kurbanCounter,setKurbanCounter]=useState(0);
   const [oldPrice, setoldPrice] = useState(0)
+  
  
   const keyName=data.name+"bool"
   useEffect(() => {
    setfirst(JSON.parse(localStorage.getItem(keyName))?JSON.parse(localStorage.getItem(keyName)):false)
+   
   }, [])
   
   useEffect(() => {

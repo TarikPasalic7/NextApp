@@ -17,13 +17,14 @@ export default function Header() {
    
     const [counter,setCounter]=useContext(CounterContext)
     const [sum,setSum]=useContext(SumContext)
-    
+    const [counterStorage,setCounterStorage]=useLocalStorage("counter")
     
      //const [counterLocal,setCounterLocal]=useLocalStorage("counter")
 
     useEffect(() => {
       
-     JSON.stringify(localStorage.setItem("counter",counter)) 
+     //JSON.stringify(localStorage.setItem("counter",counter)) 
+     setCounterStorage(counter)
      
     }, [counter])
     useEffect(() => {

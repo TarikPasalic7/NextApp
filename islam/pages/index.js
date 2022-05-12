@@ -9,12 +9,12 @@ import { CounterContext } from '../Components/CounterContext'
 import { SumContext } from '../Components/SumContext'
 import useLocalStorage from '../CustomHooks/useLocalStorage';
 
-import {BrowserRouter } from 'react-router-dom'
-let init;
+
+//let init;
 let sumInit;
 if (typeof window !== 'undefined') {
   // Perform localStorage action
-init=localStorage?.getItem("counter")?localStorage?.getItem("counter"):0;
+//init=localStorage?.getItem("counter")?localStorage?.getItem("counter"):0;
 sumInit=localStorage?.getItem("sum")?localStorage?.getItem("sum"):0;
 
 }
@@ -25,7 +25,7 @@ useEffect(() => {
   
   
   
-  setCounter(init )
+  setCounter(counterLocal?counterLocal:0)
    setSum(sumInit)
  
  
@@ -33,7 +33,7 @@ useEffect(() => {
 
 
   
- 
+  const [counterLocal,setCounterLocal]=useLocalStorage("counter")
   const [counter, setCounter] = useState("");
   const [sum, setSum] = useState("")
 

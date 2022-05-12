@@ -8,6 +8,7 @@ import { CounterContext } from '../Components/CounterContext'
 import { SumContext } from '../Components/SumContext'
 import Uplata from '../Components/Uplata'
 
+
 let init;
 let sumInit
 if (typeof window !== 'undefined') {
