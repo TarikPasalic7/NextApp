@@ -10,14 +10,6 @@ import { SumContext } from '../Components/SumContext'
 import useLocalStorage from '../CustomHooks/useLocalStorage';
 
 
-//let init;
-let sumInit;
-if (typeof window !== 'undefined') {
-  // Perform localStorage action
-//init=localStorage?.getItem("counter")?localStorage?.getItem("counter"):0;
-sumInit=localStorage?.getItem("sum")?localStorage?.getItem("sum"):0;
-
-}
 
 
 export default function Home() {
@@ -26,7 +18,7 @@ useEffect(() => {
   
   
   setCounter(counterLocal?counterLocal:0)
-   setSum(sumInit)
+   setSum(sumLocal?sumLocal:0)
  
  
 }, [])
@@ -34,6 +26,7 @@ useEffect(() => {
 
   
   const [counterLocal,setCounterLocal]=useLocalStorage("counter")
+  const [sumLocal,setSumLocal]=useLocalStorage("sum")
   const [counter, setCounter] = useState("");
   const [sum, setSum] = useState("")
 

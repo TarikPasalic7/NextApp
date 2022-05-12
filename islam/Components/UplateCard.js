@@ -20,27 +20,26 @@ import useLocalStorage from '../CustomHooks/useLocalStorage';
 
 export default function UplateCard({data}) {
  
-  const [price, setPrice] = useState(0)
+  const keyName=data.name
+  const keyNameBoolean=data.name+"bool";
+  
+  const [price, setPrice] = useLocalStorage(keyName)
   const [counter, setCounter] = useContext(CounterContext);
   const [sum,setSum]=useContext(SumContext);
-  const [first, setfirst] = useState(false)
-  const [kurbanCounter,setKurbanCounter]=useState(0);
-  const [oldPrice, setoldPrice] = useState(0)
+  const [first, setfirst] = useLocalStorage(keyNameBoolean)
+  const [kurbanCounter,setKurbanCounter]=useLocalStorage("kurbanCounter");
+  const [oldPrice, setoldPrice] = useLocalStorage("oldPrice");
   
  
-  const keyName=data.name+"bool"
+  
   useEffect(() => {
-   setfirst(JSON.parse(localStorage.getItem(keyName))?JSON.parse(localStorage.getItem(keyName)):false)
+   setfirst(first?first:false)
+ setPrice(price?price:0)
+ setKurbanCounter(kurbanCounter?kurbanCounter:0)
+ setoldPrice(oldPrice?oldPrice:0)
    
   }, [])
   
-  useEffect(() => {
-    
-    setPrice(localStorage.getItem(data.name) ) 
-   setKurbanCounter(JSON.parse(localStorage.getItem(data.name)))
- 
-   
-  }, [counter])
 
   
 
@@ -52,39 +51,32 @@ export default function UplateCard({data}) {
 
   const onClickEvent=()=>{
   
-    let key=data.name
-    key=="Kurban"?JSON.stringify(localStorage.setItem(key,kurbanCounter)):localStorage.setItem(key,price)
-    JSON.stringify(localStorage.setItem(keyName,first))
-    ;
+    
+   // keyName=="Kurban"?JSON.stringify(localStorage.setItem(key,kurbanCounter)):localStorage.setItem(key,price)
+    //JSON.stringify(localStorage.setItem(keyName,first))
+    
     
     setSum(Number(sum)-oldPrice + Number(price));
     setoldPrice(Number(price))
    
     if(!first)
     {
-      if(key=="Kurban")
-      {
-        setSum(Number(sum)+(Number(data.price)*kurbanCounter));
-        setCounter(Number(counter) + Number(kurbanCounter))
-      }
-      else{
-       
       setCounter(++counter)
-      }
-     
       setfirst(true)
     }
 
 }
 const Add=()=>{
  setKurbanCounter(++kurbanCounter)
- 
+ setSum(sum+data.price)
+ setCounter(++counter)
  
 
 }
 const Remove=()=>{
   setKurbanCounter(--kurbanCounter)
-  
+  setSum(sum-data.price)
+ setCounter(--counter)
 
 }
 

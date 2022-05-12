@@ -7,17 +7,10 @@ import React,{createContext,useState,useEffect} from 'react'
 import { CounterContext } from '../Components/CounterContext'
 import { SumContext } from '../Components/SumContext'
 import Uplata from '../Components/Uplata'
+import useLocalStorage from '../CustomHooks/useLocalStorage'
 
 
-let init;
-let sumInit
-if (typeof window !== 'undefined') {
-  // Perform localStorage action
-init=localStorage?.getItem("counter")?localStorage?.getItem("counter"):0
-sumInit=localStorage?.getItem("sum")?localStorage?.getItem("sum"):0;
 
-}
-  
 
 export default function Uplate() {
 
@@ -25,11 +18,13 @@ export default function Uplate() {
   
   
      
-  setCounter(init )
-  setSum(sumInit)
+    setCounter(counterLocal?counterLocal:0)
+    setSum(sumLocal?sumLocal:0)
    
    
   }, [])
+  const [counterLocal,setCounterLocal]=useLocalStorage("counter")
+  const [sumLocal,setSumLocal]=useLocalStorage("sum")
   const [counter, setCounter] = useState("");
   const [sum, setSum] = useState("")
   return (
