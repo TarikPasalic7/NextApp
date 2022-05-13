@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 export default function RegistracijaCard({image,title,text}) {
   return (
-    <Card sx={{ maxWidth: 400,height:400}}>
+    <Card data-testid="card" sx={{ maxWidth: 400,height:400}}>
     <CardMedia
       component="img"
       alt={title}

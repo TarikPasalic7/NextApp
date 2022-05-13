@@ -50,11 +50,7 @@ export default function UplateCard({data}) {
   }
 
   const onClickEvent=()=>{
-  
-    
-   // keyName=="Kurban"?JSON.stringify(localStorage.setItem(key,kurbanCounter)):localStorage.setItem(key,price)
-    //JSON.stringify(localStorage.setItem(keyName,first))
-    
+     
     
     setSum(Number(sum)-oldPrice + Number(price));
     setoldPrice(Number(price))
@@ -70,6 +66,7 @@ const Add=()=>{
  setKurbanCounter(++kurbanCounter)
  setSum(sum+data.price)
  setCounter(++counter)
+ setfirst(true);
  
 
 }
@@ -77,6 +74,7 @@ const Remove=()=>{
   setKurbanCounter(--kurbanCounter)
   setSum(sum-data.price)
  setCounter(--counter)
+ setfirst(true);
 
 }
 
@@ -114,7 +112,7 @@ const Remove=()=>{
        <Button   sx={{color:"#25AAA0",maxWidth: "80px",
           maxHeight: "42px",
           minWidth: "80px",
-          minHeight: "42px"}} variant="outlined" color='success' onClick={onClickEvent} >UPLATI</Button></Stack>:<><TextField id="outlined-basic"  onChange={setPriceOnChange}  variant="outlined" value={price} size="small"/> <Button onClick={onClickEvent}  sx={{color:"#25AAA0",maxWidth: "80px",
+          minHeight: "42px"}} variant="outlined" color='success' onClick={onClickEvent} >UPLATI</Button></Stack>:<><TextField id="outlined-basic" data-testid="textField" onChange={setPriceOnChange}  variant="outlined" value={price} size="small"/> <Button onClick={onClickEvent}  sx={{color:"#25AAA0",maxWidth: "80px",
           maxHeight: "42px",
           minWidth: "80px",
           minHeight: "42px"}} variant="outlined" color='success'>UPLATI</Button></>}

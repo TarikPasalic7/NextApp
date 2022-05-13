@@ -1,16 +1,32 @@
-import React,{ useContext,useEffect } from 'react'
-import {Container,Grid,TextField,Card,CardMedia,Button,Typography} from '@mui/material'
+import React,{ useContext,useEffect,useState } from 'react'
+import {Container,Grid,TextField,Card,CardMedia,Button,Typography,Stack,CardContent} from '@mui/material'
+import axios from 'axios';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
-import { CounterContext } from './CounterContext';
+
+import { CounterContext} from './CounterContext';
 import { SumContext } from './SumContext';
+import UplataAddedCard from './UplataAddedCard';
 
 export default function Uplata() {
     const [counter,setCounter]=useContext(CounterContext)
     const [sum,setSum]=useContext(SumContext);
+    const [data, setData] = useState([])
+    const callDataAsync= async ()=>{
+      
+      const tempData= await axios.get("http://localhost:3000/api/uplate");
+      setData(tempData.data)
+  }
+  
+  useEffect(() => {
+    
+     
+  callDataAsync();
    
+  }, [])
+  
 
     const style = {
         width: '100%',
@@ -24,6 +40,18 @@ export default function Uplata() {
       alignItems="center" sx={{marginTop:25}}>
         <Grid container spacing={2}  >
   <Grid item xs={8} minHeight="500" >
+
+    {
+      data.map((data,index)=>(
+
+        <UplataAddedCard data={data} key={index}/>
+
+      ))
+
+    }
+         
+
+
    
   </Grid>
   <Grid item xs={4} minHeight="500" textAlign="center">
